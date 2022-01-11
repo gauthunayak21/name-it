@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import Header from './components/Header';
+import Searchbox from './components/Seachbox';
+import SearchResults from './components/SearchResults'
+
+const name = require('@rstacruz/startup-name-generator');
 
 function App() {
+
+  const [searchValues, setSearchResults] = useState([]);
+  const [headerExpanded, setExpanded] = useState(false);
+
+  const onSearch = (e) => {
+    // setSearchText(e.target.value);
+  e.target.value.length ? setSearchResults(name(e.target.value)) : setSearchResults([]);
+    setExpanded(e.target.value.length);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col items-center">
+      <Header headerExpanded={headerExpanded} />
+      <Searchbox onSearch={onSearch} />
+      <SearchResults results={searchValues} />
     </div>
   );
 }

@@ -1,0 +1,26 @@
+.header-image {
+    width: auto;
+    transition: max-width 1s, mix-width 1s;
+}
+
+.text-size {
+    transition: font-size 1s;
+}
+
+.header-in {
+    max-width: 65%;
+    min-width: 25%;
+}
+
+.header-out {
+    max-width: 25%;
+    min-width: 25%;
+}
+
+.text-out {
+    @apply text-8xl;
+}
+
+.text-in {
+    @apply text-4xl;
+}
